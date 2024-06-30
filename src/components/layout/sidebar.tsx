@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navlink } from "@/types/navlink";
@@ -12,25 +12,44 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
 import { Paragraph } from "@/components/typography";
 
-const isMobile = () => {
-  if (typeof window === "undefined") return false;
-  const width = window.innerWidth;
-  return width <= 1024;
-};
-
 export const Sidebar = () => {
-  const [open, setOpen] = useState(isMobile() ? false : true);
+  const [open, setOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
+    };
+
+    if (isClient) {
+      window.addEventListener("resize", handleResize);
+      handleResize(); // Initial check on component mount
+    }
+
+    return () => {
+      if (isClient) {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, [isClient]);
 
   return (
     <>
       <AnimatePresence>
-        {open && (
+        {(open || (isClient && window.innerWidth > 1024)) && (
           <motion.div
             initial={{ x: -200 }}
             animate={{ x: 0 }}
-            transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-10 z-[100] py-16 bg-neutral-100 sm:min-w-[20rem] min-w-[14rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between"
+            transition={{ duration: 0.2, ease: "linear" }}
+            className="px-10 z-[100] py-16 bg-neutral-100 max-w-[20rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between"
+            style={{ overflow: "hidden" }}
           >
             <div>
               <SidebarHeader />
@@ -41,7 +60,7 @@ export const Sidebar = () => {
         )}
       </AnimatePresence>
       <button
-        className="fixed lg:hidden bottom-2 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-10"
+        className="fixed lg:hidden bottom-2 right-6 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-10"
         onClick={() => setOpen(!open)}
       >
         <IconLayoutSidebarRightCollapse className="h-4 w-4 text-text-foreground" />
@@ -65,7 +84,7 @@ export const Navigation = ({
         <Link
           key={link.href}
           href={link.href}
-          onClick={() => isMobile() && setOpen(false)}
+          onClick={() => setOpen(false)}
           className={twMerge(
             "text-text-foreground hover:text-text transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
             isActive(link.href) && "bg-white shadow-lg text-text"
