@@ -1,0 +1,31 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2022-10-11",
+  title: "Crypto Direct CLI",
+  description:
+    "A streamlined command-line interface (CLI) application developed in Python, enabling users to seamlessly execute operations on Binance and Bitfinex cryptocurrency exchanges directly from the terminal",
+  image: "/images/projects/crypto-cli/crypto-cli.jpg",
+  tags: ["Crypto", "Python"],
+  type: "project"
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A streamlined command-line interface (CLI) application developed in Python, enabling users to seamlessly execute operations on Binance and Bitfinex cryptocurrency exchanges directly from the terminal
+
+## PoC
+
+### Functional requirements v0.1 scope
+
+As a `user` you can do:
+
+- configure CLI application
+  - set credentials of the exchange (apiKey, secretKey)
+  - set default timeframe (e.g 1D, 4H, 1H)
+  - set default quote currency (e.g USDT, BUSD)
+- display popular coins (displayed on the main page)
+- show last N timeframes of specified currency
+  - if N is not specified - use default value
+  - pprint results (colors are welcomed)
+  - export results to file (csv/json)
