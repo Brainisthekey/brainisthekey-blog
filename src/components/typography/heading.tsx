@@ -27,13 +27,13 @@ const headingVariants = cva(
   }
 );
 
-export interface HeadingProps
+export interface HeadingProps<T extends keyof JSX.IntrinsicElements>
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
-  as?: keyof JSX.IntrinsicElements;
+  as?: T;
 }
 
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps<any>>(
   ({ className, variant, as: Tag = "h1", ...props }, ref) => {
     return (
       <Tag
@@ -48,6 +48,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     );
   }
 );
+
 Heading.displayName = "Heading";
 
 export { Heading, headingVariants };
