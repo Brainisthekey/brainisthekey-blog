@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 import { certifications } from "@/constants/certifications";
 import { Paragraph } from "@/components/typography";
 import {
@@ -12,8 +13,12 @@ import {
 
 export const CertsCoursesHistory = () => {
   return (
-    <div className="flex max-w-xl items-center justify-start ml-12">
-      <Carousel className="max-w-xs md:max-w-xl max-h-64">
+    <div className="flex max-w-xl items-center justify-start sm:ml-12 ml-0">
+      <Carousel
+        opts={{ loop: true }}
+        plugins={[Autoplay({ delay: 2500, stopOnInteraction: false })]}
+        className="max-w-xs md:max-w-xl max-h-64"
+      >
         <CarouselContent>
           {certifications.map((item, index) => (
             <CarouselItem className="md:basis-1/2" key={`journey-${index}`}>
