@@ -55,7 +55,11 @@ export const Sidebar = () => {
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-            <Badge href="/resume" text="Read Resume" />
+            <Badge
+              href="/resume"
+              text="Read Resume"
+              onClick={() => setOpen(false)}
+            />
           </motion.div>
         )}
       </AnimatePresence>
