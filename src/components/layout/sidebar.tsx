@@ -30,7 +30,7 @@ export const Sidebar = () => {
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-10 pr-10 z-[100] py-16 bg-neutral-100 sm:min-w-[20rem] min-w-[14rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between"
+            className="px-10 z-[100] py-16 bg-neutral-100 sm:min-w-[20rem] min-w-[14rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between"
           >
             <div>
               <SidebarHeader />
