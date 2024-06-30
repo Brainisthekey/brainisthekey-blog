@@ -1,5 +1,14 @@
 export const activityTimeline = [
   {
+    title: "TON Society BootCamp in Warsaw",
+    date: "2023-11-15",
+    thesis: "Blockchain Development",
+    tags: ["Event"],
+    description:
+      "Spent 48 amazing hours at the TON Society BootCamp in Warsaw, working on the TON blockchain. The atmosphere was full of energy, with everyone focused on improving the Telegram ecosystem. This is just the beginning! 🚀",
+    image: "/images/activities/ton-hackhaton-07.06.2024.jpg",
+  },
+  {
     title: "Company Ambassador of 2023",
     date: "2024-12-01",
     tags: ["Achievement"],
