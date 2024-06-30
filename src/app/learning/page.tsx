@@ -21,7 +21,7 @@ export default function Learning() {
         Courses & Certifications
       </Heading>
       <CertsCoursesHistory />
-      <Heading as="h3" variant="h3" className="my-4">
+      <Heading as="h3" variant="h3" className="my-6">
         Code Wars
       </Heading>
       <CodeWarsStatistics />
