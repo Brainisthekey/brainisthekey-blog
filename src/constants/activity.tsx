@@ -1,7 +1,7 @@
 export const activityTimeline = [
   {
     title: "TON Society BootCamp in Warsaw",
-    date: "2023-11-15",
+    date: "2024-06-07",
     thesis: "Blockchain Development",
     tags: ["Event"],
     description:
