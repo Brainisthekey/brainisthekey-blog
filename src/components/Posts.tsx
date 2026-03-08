@@ -58,11 +58,11 @@ export const Posts = ({ posts, type }: { posts: Post[]; type: string }) => {
             </AnimatePresence>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative z-20">
               <Image
-                src={post.image}
+                src={post.thumbnail || post.image}
                 alt="thumbnail"
                 height="200"
                 width="200"
-                className="rounded-md object-cover h-40 w-60"
+                className="rounded-md object-contain h-40 w-60"
               />
               <div className="flex flex-col col-span-3">
                 <div className="flex md:justify-between flex-col md:flex-row md:items-center">

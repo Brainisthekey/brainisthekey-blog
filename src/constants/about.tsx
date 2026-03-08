@@ -5,77 +5,17 @@ export const aboutData = {
     "/images/about/about-4.jpeg",
     "/images/about/about-2.jpeg",
   ],
-  sections: [
-    {
-      title: "About Me",
-      content:
-        "Hello, I am Andrew Alieksieiev, a passionate lifelong learner and software design enthusiast. I thrive on tackling new and complex challenges and am proud to be part of one of the largest UEM, ITAM, and MDM software companies that serve millions of clients. My primary languages are Python, C++, and JavaScript. In my free time, I enjoy listening to electronic music and exploring photography and modern art.",
-    },
-    {
-      title: "Professional Responsibilities and Achievements",
-      steps: [
-        {
-          thesis: "Advanced Solution Architecture:",
-          description:
-            "Rapidly progressed to the Solution Architect team, leveraging this position to significantly enhancing knowledge and skills",
-        },
-        {
-          thesis: "AI Enthusiast:",
-          description:
-            "Spearheaded initiatives to elevate AI proficiency within the company, engaging in educational efforts aimed at IT developers and external audiences to highlight our AI capabilities",
-        },
-        {
-          thesis: "Leadership and Coordination:",
-          description:
-            "Assumed critical leadership roles, including steering the Core Backend Chapter and facilitating Agile meetings",
-        },
-        {
-          thesis: "Talent Acquisition and Mentorship:",
-          description:
-            "Actively involved in the recruitment process, identifying and onboarding new developers, providing mentorship and guidance",
-        },
-        {
-          thesis: "Build Learning Development Path:",
-          description:
-            "Take an active role in developing the internal learning and development program by creating technical presentations and leading workshops",
-        },
-        {
-          thesis: "Releases Management",
-          description: "",
-        },
-      ],
-    },
-    {
-      title: "Public Speaking and Event Participation",
-      content:
-        "Joining tech events and speaking publicly has been a fun way to share what I know and network with others in the field. These activities have added a lot to my career and opened up new opportunities for me",
-      steps: [
-        {
-          thesis: "Company Ambassador:",
-          description:
-            "I have been selected two years in a row for the annual company representative nomination",
-        },
-        {
-          thesis: "Conference Presentations:",
-          description:
-            'Delivered a lot of impactful presentations on numeral conferences like - "Wroc.py", "Pytech Summit", "Pythonowe Katowice", "Code Europe", "Pycon PL", "PyRa", "PyData" and more...',
-        },
-        {
-          thesis: "Hackathons Participation:",
-          description:
-            'Participated in several programming hackathons, including the crypto one - "The Open League Hackathon". Moreover, served as a mentor and jury member at the "Game of Teens Hackathon", guiding young tech enthusiasts',
-        },
-        {
-          thesis: "LinkedIn Activity:",
-          description:
-            "Actively engage on LinkedIn, sharing insights and discussing various technology and management topics within the IT industry (kind of on pause)",
-        },
-        {
-          thesis: "Writing Tech Articles:",
-          description:
-            'Wrote several tech articles, including one published on justjoin.it titled "Effective Management of Protocol Buffers."',
-        },
-      ],
-    },
+  paragraphs: [
+    "I'm Andrew, a software engineer based in Poland. I write Python, C++, and TypeScript for a living. I spent years working at one of the largest UEM/MDM companies out there, managing millions of devices across enterprises. That experience built me as an engineer more than anything else. Right now I'm working on building a European alternative to AWS.",
+
+    "Along the way I grew into a Backend Team Lead role. Not project management, but people. Running 1:1s with developers, designing their growth plans, helping them through hard technical problems, and advising on hiring decisions. I also did technical interviews and recruitment myself. I went through the Talent Navigator program twice, working toward Solution Architect.",
+
+    "I run a startup with my wife, a language learning platform called Airtalk. Outside of that, I build things that interest me. Trading bots, MEV extraction on Solana, a mobile app that turns your daily steps into a virtual journey around the world. Some of these projects are serious, some are just me wanting to see if something works.",
+
+    "I taught at a university for a while, IT Technology in Business. It was a nice experience. Same energy with public speaking and workshops. I've spoken at PyCon PL, PyData, Code Europe, and a bunch of local meetups on topics like multi-tenancy, stress testing, event-driven architecture, and legacy code migration. I also run workshops internally, from Python architectural patterns to AI-augmented development best practices. Sharing knowledge is something I genuinely enjoy and keep coming back to. Got picked as company ambassador two years in a row, which was nice.",
+
+    "On the AI side, I'm an AI Ambassador at my company. I created an AI bootcamp internally and keep driving it forward. I push adoption, run workshops, and try to get engineers to actually use AI in their daily work. But I started programming when AI wasn't around. I learned to think through problems myself first. AI is a great tool, but it shouldn't replace the thinking part. The moment we stop reasoning and just accept outputs, we lose what makes us good at this. I care about the ethical side of AI too, how it's used, what data it touches, where the boundaries should be.",
+
+    "When I'm not coding, I listen to electronic music, surf when I can, and take photos of random things. I have equipment to produce music too, just no time for it.",
   ],
 };

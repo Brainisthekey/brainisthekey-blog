@@ -1,0 +1,31 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2025-03-05",
+  title: "Solana MEV Extraction",
+  description:
+    "Research and implementation of MEV extraction strategies on Solana using Jito bundles and TPU transactions",
+  image: "/images/projects/solana-mev-extraction/solana-mev-extraction.svg",
+  thumbnail: "/images/projects/solana-mev-extraction/solana-mev-extraction-small.svg",
+  tags: ["Solana", "MEV", "Rust", "Jito", "Blockchain"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+Research and implementation of MEV extraction strategies on Solana. MEV on Solana works differently from Ethereum. There's no mempool in the traditional sense, so the whole extraction game relies on Jito's infrastructure: a modified validator, a relayer that intercepts transactions, and a block engine that handles bundle selection. Searchers form bundles, tip validators, and compete for profitable ordering.
+
+## Challenges
+
+Speed is everything. Solana's block times are around 400ms. By the time you spot an opportunity, decode the transaction, build a bundle, and land it on-chain, the window might already be closed. RPC latency alone can kill a strategy, which is why direct TPU access matters more than on Ethereum.
+
+The infrastructure is partially closed source. The block engine where bundle selection happens is a black box. You can't see how bundles get prioritized or dropped. Tuning tips and bundle construction is trial and error.
+
+Solana's transaction format adds friction too. Instruction decoding, account lookup tables, versioned transactions. It's a lot of low-level detail to get right before you can even start thinking about strategy.
+
+## Tech stack
+
+- Rust for Jito SDK, Solana SDK, and MEV bot implementations
+- Solana CLI and RPC for node interaction
+- WebSocket for real-time transaction and block data
+- Anchor for program instruction decoding

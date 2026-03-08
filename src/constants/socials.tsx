@@ -1,17 +1,11 @@
 import {
   IconBrandLinkedin,
-  IconBrandTwitter,
   IconBrandGithub,
   IconBrandTelegram,
   IconMail,
 } from "@tabler/icons-react";
 
 export const socials = [
-  {
-    href: "https://twitter.com/Brain_keyy",
-    label: "Twitter",
-    icon: IconBrandTwitter,
-  },
   {
     href: "https://www.linkedin.com/in/andrew-alieksieiev-62a8b7212/",
     label: "LinkedIn",

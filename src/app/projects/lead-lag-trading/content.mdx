@@ -1,0 +1,33 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2025-03-04",
+  title: "Lead-Lag Trading Strategy",
+  description:
+    "Exploiting price propagation delays across crypto exchanges, monitoring Binance, OKX, and Bybit to trade on Hyperliquid",
+  image: "/images/projects/lead-lag-trading/lead-lag-trading.svg",
+  thumbnail: "/images/projects/lead-lag-trading/lead-lag-trading-small.svg",
+  tags: ["HFT", "Crypto", "Python", "WebSocket", "Hyperliquid"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+Prices on big crypto exchanges move first. Smaller or less liquid venues follow a moment later. This strategy watches Binance, OKX, and Bybit in real time via WebSocket and trades on Hyperliquid before the price catches up. Not classical arbitrage. Multiple exchanges are monitored, but trades only happen on a single venue.
+
+The interesting part is why Hyperliquid. Its Mark Price is derived from the median of Binance, OKX, and Bybit perpetual mid-prices. CEX price moves feed directly into Hyperliquid's pricing. That's exactly what the strategy exploits.
+
+## Challenges
+
+The whole thing lives and dies on speed. The bot needs to process price updates from three exchanges simultaneously, generate a combined signal, and execute on Hyperliquid before the price catches up. Milliseconds matter. Running on low-latency servers close to the infrastructure and monitoring WebSocket round-trip times is part of the game.
+
+Signal generation is tricky to get right. Each exchange gets evaluated independently every cycle, comparing mid-prices and registering directional signals. Those get combined into a unified trend indicator. Sounds simple, but tuning the thresholds, smoothing, and deciding when the signal is strong enough to act on is where most of the work goes.
+
+Order book depth adds another layer. Top-of-book prices tell one story, but large volume imbalances and spoof walls can move price before any real trade happens. Whether a leading exchange's move actually propagates depends on the depth and structure of the lagging exchange's book.
+
+## Tech stack
+
+- Python for the core bot logic
+- WebSocket connections to Binance, OKX, and Bybit
+- Hyperliquid API for order execution
+- [backtesting.py](https://kernc.github.io/backtesting.py/) for strategy validation

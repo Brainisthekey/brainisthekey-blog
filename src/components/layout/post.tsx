@@ -25,7 +25,7 @@ export function PostLayout({ children, meta }: any) {
         <header className="flex flex-col">
           <Link
             type="button"
-            href={meta.type == "blog" ? "/blog" : "/projects"}
+            href={meta.type === "activity" ? "/activities" : meta.type === "blog" ? "/blog" : "/projects"}
             aria-label="Go back to articles"
             className="group flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition  "
           >

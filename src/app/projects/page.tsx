@@ -1,7 +1,6 @@
 import { Container } from "@/components/layout";
 import { Heading, Paragraph } from "@/components/typography";
 import { Posts } from "@/components/Posts";
-import { SparklesPreview } from "@/components/ui";
 import { getAllProjects } from "@/lib/getAllProjects";
 
 export default async function Project() {
@@ -19,7 +18,6 @@ export default async function Project() {
         completed, forbidden and ongoing work
       </Paragraph>
       <Posts posts={data} type="project" />
-      <SparklesPreview />
     </Container>
   );
 }

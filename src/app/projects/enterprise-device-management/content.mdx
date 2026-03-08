@@ -1,0 +1,46 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2022-01-01",
+  title: "Enterprise Device Management Platform",
+  description:
+    "A large-scale UEM/MDM platform managing millions of endpoints, where I worked across the full stack from C++ core to Django backend to React frontend",
+  image: "/images/projects/enterprise-device-management/enterprise-device-management.svg",
+  thumbnail: "/images/projects/enterprise-device-management/enterprise-device-management-small.svg",
+  tags: ["Python", "C++", "Django", "React", "DevOps", "Cloud"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+For about three years I worked on one of the largest Unified Endpoint Management, IT Asset Management, and Mobile Device Management platforms out there. The product manages millions of devices across enterprises. iOS, Android, Windows, macOS, Chromebooks. Primarily on-prem, with a cloud-hosted option. I touched almost every part of it: C++ core, Django Rest Framework backend, React frontend, CI/CD, packaging, release management, and cloud infrastructure.
+
+## Challenges
+
+The scale alone makes everything hard. Thousands of enterprise customers, each managing fleets of 10,000+ devices. A bad upgrade path or a broken migration can brick an entire fleet overnight. I've been on the other end of that, typing commands into a customer's console via remote session, knowing one wrong move and their devices go dark.
+
+The codebase is a mix of C++, Python, and JavaScript, spanning decades of development. Introducing new features means understanding how they interact with legacy components written by people who left years ago.
+
+Cross-platform support is its own nightmare. Every OS has different MDM protocols, different enrollment flows, different update mechanisms. What works on macOS breaks on Windows. What works on Windows doesn't exist on Chromebooks. You spend as much time on platform quirks as on actual features. On top of that, integrations with autopkg, winget, iTunes, and Play Market each come with their own API quirks and distribution logic.
+
+Data transfer between the server and devices could hit terabytes per day on cloud deployments. Optimizing that traffic, figuring out what actually needs to sync, batching, compression, was a constant background problem.
+
+Releases are a coordination exercise. Building for multiple platforms, validating pipelines across Debian and RPM, publishing artifacts, writing customer docs. I orchestrated multiple major releases.
+
+The low-level work surprised me the most. Custom Linux kernel builds with Buildroot, TLS handshake debugging, certificate chains, Postgres row-level security, CPU and RAM profiling at the process level. Not what you expect when you join as a Python developer.
+
+## Tech stack
+
+- C++ and Qt for the core engine and desktop clients
+- Python and Django Rest Framework for the backend API and server logic
+- React, Redux, and TypeScript for the admin frontend
+- PostgreSQL with recursive queries, layered views, and pgBouncer
+- NATS and ZeroMQ for service messaging
+- Prometheus and Grafana for monitoring
+- Elasticsearch for analytics and search
+- Docker, Helm, and Kubernetes for deployment
+- GitLab CI/CD for build pipelines
+- Debian and RPM packaging
+- AWS (Lambdas, S3, IAM, EC2) and Terraform
+- Lua and Bash for deployment and packaging scripts
+- Buildroot for custom Linux kernels

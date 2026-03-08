@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Paragraph, Heading } from "@/components/typography";
-import { IconCircleCheckFilled } from "@tabler/icons-react";
+import { Paragraph } from "@/components/typography";
 import { TechStack } from "@/components/about";
 import { aboutData } from "@/constants/about";
 
@@ -37,38 +36,13 @@ export const About = () => {
       </div>
 
       <div className="max-w-4xl">
-        {aboutData.sections.map((section, index) => (
-          <div key={`section-${index}`} className="mt-4">
-            <Heading as="h3" variant="h3">
-              {section.title}
-            </Heading>
-            {section.content && (
-              <Paragraph className="mt-4">{section.content}</Paragraph>
-            )}
-            {section.steps && (
-              <div className="mt-4">
-                {section.steps.map((step, stepIndex) => (
-                  <Step key={`step-${stepIndex}`} step={step} />
-                ))}
-              </div>
-            )}
-          </div>
+        {aboutData.paragraphs.map((text, index) => (
+          <Paragraph key={`paragraph-${index}`} className="mt-4">
+            {text}
+          </Paragraph>
         ))}
         <TechStack />
       </div>
-    </div>
-  );
-};
-
-const Step = ({ step }: { step: { thesis: string; description: string } }) => {
-  return (
-    <div className="flex items-start my-2">
-      <div className="flex-shrink-0 mt-1">
-        <IconCircleCheckFilled className="h-5 w-5 text-primary" />
-      </div>
-      <Paragraph className="ml-4">
-        <span className="font-semibold">{step.thesis}</span> {step.description}
-      </Paragraph>
     </div>
   );
 };

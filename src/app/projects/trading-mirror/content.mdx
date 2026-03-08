@@ -1,0 +1,33 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2024-12-25",
+  title: "Trading Mirror",
+  description:
+    "Multi-broker trading signal replication system that mirrors signals from MultiCharts to MetaTrader 5 accounts in real time",
+  image: "/images/projects/trading-mirror/trading-mirror.svg",
+  thumbnail: "/images/projects/trading-mirror/trading-mirror-small.svg",
+  tags: ["Trading", "MetaTrader 5", "C++", "FastAPI", "Next.js"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A system that watches trading signals from MultiCharts and replicates them to MetaTrader 5 accounts across different brokers automatically. When a signal fires, the corresponding position gets opened or closed on all connected MT5 accounts in real time. Users get a dashboard to configure their accounts, see mirrored positions, and toggle copying on or off.
+
+## Challenges
+
+Bridging MultiCharts and MetaTrader 5 is not straightforward. Signals come from one platform and need to be executed on another. The MT5 side runs a C++ plugin that picks up signals, handles symbol mapping between brokers (same instrument, different ticker), and opens or closes positions without blocking the trading thread.
+
+Multi-tenancy was a core requirement from the start. Every user needs isolated data. One person's trading activity can't leak into another's. Routing each authenticated user to their own database while keeping the system simple to operate took some thinking.
+
+The system has to stay responsive even when the master account is actively trading. Signals need to propagate fast. A delay of a few seconds can mean a completely different entry price, especially on volatile instruments.
+
+## Tech stack
+
+- C++ with libpq and libcurl for the MT5 signal producer
+- FastAPI (Python) for auth and database routing
+- Next.js 14, React, Clerk, Prisma, TanStack Query for the dashboard
+- PostgreSQL with per-user isolated databases
+- Docker and Docker Compose for deployment
+- Caddy as reverse proxy

@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout";
 import { Heading, Paragraph } from "@/components/typography";
-import { ActivityHistory } from "@/components/activities";
+import { ActivityGrid } from "@/components/activities";
 
 export default function Activities() {
   return (
@@ -13,7 +13,7 @@ export default function Activities() {
         involved in, including hackathons, public speaking engagements, project
         presentations, workshops and courses
       </Paragraph>
-      <ActivityHistory />
+      <ActivityGrid />
     </Container>
   );
 }

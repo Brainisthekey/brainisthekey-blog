@@ -1,0 +1,34 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2026-01-17",
+  title: "Walk to Explore",
+  description:
+    "A mobile app that turns your daily steps into a virtual journey around the world, unlocking cities, collecting stamps, and discovering destinations",
+  image: "/images/projects/walk-to-explore/walk-to-explore.svg",
+  thumbnail: "/images/projects/walk-to-explore/walk-to-explore-small.svg",
+  tags: ["React Native", "Expo", "Supabase", "Mapbox", "Mobile"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A mobile app that turns daily steps into a virtual journey around the world. Pick a route, say Warsaw to Paris. Walk normally throughout your day. Steps sync automatically via HealthKit or Google Fit and move you along the route on a world map. Reach a city, unlock it, get a passport stamp, discover facts about the place. Countries fill in as you complete routes, like a scratch-off map you walk through.
+
+## Challenges
+
+Making walking feel rewarding is a design problem, not a tech problem. Fitness trackers already count steps. The hard part is turning that number into something people actually care about. Collection mechanics, passport stamps, country coloring, route progression on a real map. Getting those dopamine loops right is what makes or breaks the product.
+
+Background step syncing across iOS and Android is unreliable by nature. HealthKit and Google Fit have different APIs, different permission models, different update frequencies. Making it feel seamless when the underlying platforms fight you takes a lot of edge case handling.
+
+Route design has its own complexity. Distances need to feel fair. Mountains should feel harder than flat terrain. Routes need curated city stops with content that's actually interesting. Scaling that content across hundreds of destinations without it feeling generic is an ongoing challenge.
+
+## Tech stack
+
+- Expo with React Native and TypeScript
+- Expo Router for file-based navigation
+- Supabase for the backend: PostgreSQL, auth, and edge functions
+- Zustand for state, TanStack Query for async data, MMKV for local storage
+- Mapbox for the world map and route visualization
+- react-native-reanimated and Moti for animations
+- EAS for iOS and Android builds

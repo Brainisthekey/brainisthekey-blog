@@ -1,0 +1,32 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2025-11-27",
+  title: "Airtalk",
+  description:
+    "AI-powered language learning platform running on a self-managed K3s cluster with full observability",
+  image: "/images/projects/airtalk/airtalk.jpg",
+  thumbnail: "/images/projects/airtalk/airtalk-small.svg",
+  tags: ["Next.js", "NestJS", "Kubernetes", "AI", "PostgreSQL"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A language learning platform that generates vocabulary practice and exercises using AI. Users pick a language, and the app adapts exercises based on what they're struggling with. Runs on a self-managed 6-node K3s cluster with full GitOps, distributed tracing, and SLO-based alerting. The whole thing costs about 48 euros a month.
+
+## Challenges
+
+Building the product is the easy part. Running it on your own infrastructure is where the complexity lives. A 6-node HA cluster on Hetzner, Terraform for provisioning, ArgoCD for deployments, PostgreSQL with streaming replication and a 30-second recovery time objective. All of that needs to stay up, stay secure, and stay cheap.
+
+Observability at this scale is its own project. Logs, metrics, traces, dashboards, alerting. Getting SLO-based alerting right means defining what "good" looks like and catching drift early, instead of reacting to random threshold breaches.
+
+Keeping developer experience tight in a monorepo with frontend, backend, shared packages, and infrastructure configs takes effort. Auto-generated API clients and end-to-end type safety from the database all the way to React components.
+
+## Tech stack
+
+- Next.js, React, TanStack Query, Radix UI, Tailwind CSS for the frontend
+- NestJS, Prisma, CloudNativePG, OpenAI SDK for the backend
+- K3s on Hetzner, Terraform, ArgoCD, Harbor, CloudNativePG, WireGuard, Caddy for infrastructure
+- Loki, Grafana, Tempo, Mimir, Prometheus, OpenTelemetry for observability
+- Turborepo, pnpm, Task for developer experience

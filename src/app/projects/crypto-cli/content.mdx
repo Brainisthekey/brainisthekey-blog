@@ -1,31 +1,29 @@
 import { PostLayout } from "@/components/layout";
 
 export const meta = {
-  date: "2022-10-11",
-  title: "Crypto Direct CLI",
+  date: "2021-06-01",
+  title: "Crypto Multi-Exchange CLI",
   description:
-    "A streamlined command-line interface (CLI) application developed in Python, enabling users to seamlessly execute operations on Binance and Bitfinex cryptocurrency exchanges directly from the terminal",
-  image: "/images/projects/crypto-cli/crypto-cli.jpg",
+    "A low-latency command-line tool for trading across multiple crypto exchanges from the terminal",
+  image: "/images/projects/crypto-cli/crypto-cli.svg",
+  thumbnail: "/images/projects/crypto-cli/crypto-cli-small.svg",
   tags: ["Crypto", "Python"],
   type: "project"
 };
 
 export default (props) => <PostLayout meta={meta} {...props} />;
 
-A streamlined command-line interface (CLI) application developed in Python, enabling users to seamlessly execute operations on Binance and Bitfinex cryptocurrency exchanges directly from the terminal
+A CLI tool for trading crypto across multiple exchanges directly from the terminal. Binance, Bitfinex, same interface. You configure your API keys, pick a quote currency and timeframe, and execute trades or pull market data without leaving the command line. The whole point was speed. No browser, no UI overhead, just low-latency access to exchange APIs.
 
-## PoC
+## Challenges
 
-### Functional requirements v0.1 scope
+Every exchange has its own API. Different authentication schemes, different rate limits, different order formats, different websocket protocols. Making them feel like one unified interface means writing an abstraction layer that hides all of that without losing exchange-specific features.
 
-As a `user` you can do:
+Latency matters when you're placing orders. The CLI had to minimize overhead between your intent and the API call. That means no unnecessary roundtrips, efficient serialization, and keeping connections alive where possible.
 
-- configure CLI application
-  - set credentials of the exchange (apiKey, secretKey)
-  - set default timeframe (e.g 1D, 4H, 1H)
-  - set default quote currency (e.g USDT, BUSD)
-- display popular coins (displayed on the main page)
-- show last N timeframes of specified currency
-  - if N is not specified - use default value
-  - pprint results (colors are welcomed)
-  - export results to file (csv/json)
+## Tech stack
+
+- Python for the core CLI application
+- Click for the command-line interface framework
+- Exchange REST and WebSocket APIs (Binance, Bitfinex)
+- CSV and JSON for data export

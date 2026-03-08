@@ -1,0 +1,40 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2023-05-15",
+  title: "Network Imaging Appliance",
+  description:
+    "A PXE-based network imaging system for capturing and restoring OS images across enterprise device fleets",
+  image: "/images/projects/network-imaging-appliance/network-imaging-appliance.svg",
+  thumbnail: "/images/projects/network-imaging-appliance/network-imaging-appliance-small.svg",
+  tags: ["Python", "Lua", "Linux", "PXE", "Networking"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A network imaging appliance for enterprise environments. An admin assigns an image to a device, the device PXE boots over the network, and either captures its current OS state or restores a previously saved one. Hundreds of machines re-imaged without anyone physically touching them. The whole thing runs on a dedicated Debian-based appliance sitting on the local network.
+
+## Challenges
+
+PXE boot has to work across both UEFI and legacy BIOS machines. Two separate boot paths that need to end up at the same place. Getting that reliable across different hardware vendors and firmware versions is tedious.
+
+The appliance needs to identify each device by MAC address and decide on the fly whether to image it or let it boot normally. All of that happens during the network boot sequence, so it has to be fast and never touch disk.
+
+Network changes have to be handled gracefully. Someone swaps a cable or changes a VLAN, and the entire boot configuration needs to regenerate automatically. No manual intervention.
+
+The imaging kernel is a custom minimal Linux build. Just enough to boot, talk to the network, and run the imaging workflow. Keeping it small and stable across all the hardware we had to support was a challenge on its own.
+
+## Tech stack
+
+- Python for network config generation, imaging orchestration, and tests
+- Lua embedded in dnsmasq for TFTP request handling
+- C for dnsmasq patches and kernel-level work
+- Buildroot for custom Linux kernel and initramfs
+- Bash for build scripts and appliance assembly
+- GRUB and PXELinux for network boot
+- dnsmasq as proxy DHCP and TFTP server
+- NFS for image transfer
+- SQLite for local device/image database
+- GitLab CI for builds and testing
+- Debian as the base OS

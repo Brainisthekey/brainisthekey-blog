@@ -1,0 +1,29 @@
+import { PostLayout } from "@/components/layout";
+
+export const meta = {
+  date: "2024-11-15",
+  title: "Donaton",
+  description:
+    "TON-powered donation platform for streamers, built as a Telegram Mini App in 48 hours during a hackathon",
+  image: "/images/projects/donaton/donaton.svg",
+  thumbnail: "/images/projects/donaton/donaton-small.svg",
+  tags: ["TON", "Blockchain", "Telegram", "Hackathon"],
+  type: "project",
+};
+
+export default (props) => <PostLayout meta={meta} {...props} />;
+
+A crypto donation platform for streamers, built on the TON blockchain. Runs as a Telegram Mini App. Viewers connect their wallet and donate directly. Streamers get instant withdrawals, no middleman fees, no platform lock-in. Built from zero to working prototype in 48 hours during a hackathon. Team of four: three developers and one UX/UI designer.
+
+## Challenges
+
+48 hours to go from idea to a working demo on stage. That time pressure forces you to be ruthless about scope. We kept it to the core flow: wallet connect, donate, withdraw. Everything else was roadmap.
+
+Existing donation platforms like Donatello and StreamLabs charge high fees, are disconnected across streaming platforms, and don't touch crypto. Building a TON-native alternative that actually feels simple for both viewers and streamers was the main design challenge.
+
+## Tech stack
+
+- TON blockchain for payments and wallet integration
+- Next.js and Telegram Mini App for the frontend
+- Python for the backend
+- Figma for UX/UI design

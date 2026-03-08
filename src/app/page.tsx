@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Container>
       <Heading>
-        Welcome to My Tech Journey <span className="text-neutral-50">💬</span>
+        About Me <span className="text-neutral-50">💬</span>
       </Heading>
       <About />
     </Container>
